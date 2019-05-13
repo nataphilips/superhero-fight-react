@@ -8,7 +8,7 @@ describe('Joker class', () => {
 
   it('should have correct stats', () => {
     const joker = new Joker()
-    expect(joker.combat).toBe(85)
-    expect(joker.power).toBe(100)
+    expect(joker.combat).toBe(70)
+    expect(joker.power).toBe(45)
   });
 })
