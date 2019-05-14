@@ -3,12 +3,16 @@ import Villain from '../villain'
 export default class Mystique extends Villain {
   constructor() {
     super('Mystique');
-    this.health = 100;
-    this.intelligence = 90;
-    this.strength = 15;
-    this.speed = 25;
-    this.durability = 65;
-    this.power = 65;
-    this.combat = 75;
+
+    this.stats = [
+      {name: 'Health', value: 100},
+      {name: 'Intelligence', value: 90},
+      {name: 'Strength', value: 15},
+      {name: 'Speed', value: 25},
+      {name: 'Durability', value: 65},
+      {name: 'Power', value: 65},
+      {name: 'Combat', value: 75},
+    ]
+    this.picture = '/pictures/mystique.jpg'
   }
 }

@@ -3,12 +3,16 @@ import Superhero from '../superhero'
 export default class Batman extends Superhero {
   constructor() {
     super('Batman');
-    this.health = 100;
-    this.intelligence = 100;
-    this.strength =20;
-    this.speed = 30;
-    this.durability = 50;
-    this.power = 50;
-    this.combat = 100
+    
+    this.stats = [
+      {name: 'Health', value: 100},
+      {name: 'Intelligence', value: 100},
+      {name: 'Strength', value: 20},
+      {name: 'Speed', value: 30},
+      {name: 'Durability', value: 50},
+      {name: 'Power', value: 50},
+      {name: 'Combat', value: 100},
+    ]
+    this.picture = '/pictures/batman.jpg'
   }
 }

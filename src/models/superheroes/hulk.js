@@ -3,12 +3,16 @@ import Superhero from '../superhero'
 export default class Hulk extends Superhero {
   constructor() {
     super('Hulk');
-    this.health = 100;
-    this.intelligence = 95;
-    this.strength = 100;
-    this.speed = 65;
-    this.durability = 100;
-    this.power = 100;
-    this.combat = 85
+    
+    this.stats = [
+      {name: 'Health', value: 100},
+      {name: 'Intelligence', value: 95},
+      {name: 'Strength', value: 100},
+      {name: 'Speed', value: 65},
+      {name: 'Durability', value: 100},
+      {name: 'Power', value: 100},
+      {name: 'Combat', value: 85},
+    ]
+    this.picture = '/pictures/hulk.jpg'
   }
 }

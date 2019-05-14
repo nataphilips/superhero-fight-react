@@ -1,26 +1,119 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';  
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import Batman from '../models/superheroes/batman';
+import CaptainAmerica from '../models/superheroes/captainamerica';
+import Hulk from '../models/superheroes/hulk';
+import Spiderman from '../models/superheroes/spiderman';
+import Superman from '../models/superheroes/superman';
+import Thor from '../models/superheroes/thor';
+import Joker from '../models/villain/joker';
+import LexLuthor from '../models/villain/lexluthor';
+import Loki from '../models/villain/loki';
+import Magneto from '../models/villain/magneto';
+import Mystique from '../models/villain/mystique';
+import Thanos from '../models/villain/thanos';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.characters =  [
+      new Batman(),
+      new CaptainAmerica(),
+      new Hulk(),
+      new Spiderman(),
+      new Superman(),
+      new Thor(),
+      new Joker(),
+      new LexLuthor(),
+      new Loki(),
+      new Magneto(),
+      new Mystique(),
+      new Thanos()
+    ]
+  }
+
+  render() {
+    return (
+      <AppBody>
+        <HeroesContainer>
+            {this.characters.map(x => (
+              <CharacterCard image={x.picture}>
+                <StatsWrapper className="stat">
+                  {x.stats.map(s => ([
+                    <StatsName>
+                      {s.name}
+                    </StatsName>,
+                    <StatsBarWrap>
+                      <StatsBar value={s.value} />
+                    </StatsBarWrap>
+                  ]
+                  ))}
+                </StatsWrapper>
+              </CharacterCard>
+            ))}
+        </HeroesContainer>
+      </AppBody>
+    );
+  }
 }
+
+const Flex = styled.div`
+  display: flex;
+`
+const AppBody = styled(Flex)`
+  background: grey;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+const HeroesContainer = styled(Flex)`
+  width: 90%;
+  flex-direction: row;
+  height: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+`
+const StatsWrapper = styled(Flex)`
+  min-width: 300px;
+  height: 280px;
+  padding: 10px;
+  flex-direction: column;
+  visibility: hidden;
+  background-color: rgba(200,135,178,0.7);
+`
+const StatsName = styled(Flex)`
+  width: 100%;
+  color: white;
+`
+const StatsBarWrap = styled(Flex)`
+  width: 90%;
+  border: 2px solid white;
+  height: 20px;
+`
+const StatsBar = styled(Flex)`
+  width: ${props => props.value}%;
+  height: 100%;
+  background-color: white;
+`
+const CharacterCard = styled.div`
+  min-width: 300px;
+  height: 300px;
+  margin: 10px;
+  background-image: url(${props => props.image});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &:hover {
+    .stat {
+      visibility: visible;
+    }
+  }
+ `
 
 export default App;

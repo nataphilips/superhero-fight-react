@@ -3,12 +3,16 @@ import Villain from '../villain'
 export default class Joker extends Villain {
   constructor() {
     super('Joker');
-    this.health = 100;
-    this.intelligence = 100;
-    this.strength = 10;
-    this.speed = 15;
-    this.durability = 60;
-    this.power = 45;
-    this.combat = 70;
+
+    this.stats = [
+      {name: 'Health', value: 100},
+      {name: 'Intelligence', value: 100},
+      {name: 'Strength', value: 10},
+      {name: 'Speed', value: 15},
+      {name: 'Durability', value: 60},
+      {name: 'Power', value: 45},
+      {name: 'Combat', value: 70},
+    ]
+    this.picture = '/pictures/joker.jpg'
   }
 }
