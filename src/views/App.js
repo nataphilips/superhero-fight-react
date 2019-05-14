@@ -62,7 +62,7 @@ const Flex = styled.div`
   display: flex;
 `
 const AppBody = styled(Flex)`
-  background: grey;
+  background: #5d5b66;
   height: 100%;
   width: 100%;
   flex-direction: column;
@@ -79,25 +79,28 @@ const HeroesContainer = styled(Flex)`
 `
 const StatsWrapper = styled(Flex)`
   min-width: 300px;
-  height: 280px;
-  padding: 10px;
+  height: 260px;
+  padding: 20px;
   flex-direction: column;
   visibility: hidden;
-  background-color: rgba(200,135,178,0.7);
+  background-color: rgba(77, 73, 96, 0.7);
+  max-height: 0;
 `
 const StatsName = styled(Flex)`
   width: 100%;
-  color: white;
+  color: #e9e5ff;
+  padding-bottom: 3px;
+  text-transform: uppercase;
 `
 const StatsBarWrap = styled(Flex)`
-  width: 90%;
-  border: 2px solid white;
-  height: 20px;
+  border: 2px solid #e9e5ff;
+  height: 10px;
+  border-radius: 3px;
 `
 const StatsBar = styled(Flex)`
   width: ${props => props.value}%;
   height: 100%;
-  background-color: white;
+  background-color: #e9e5ff;
 `
 const CharacterCard = styled.div`
   min-width: 300px;
@@ -112,6 +115,13 @@ const CharacterCard = styled.div`
   &:hover {
     .stat {
       visibility: visible;
+      /* transform: translateY(50px); */
+      /* transition-duration: 2s; */
+      overflow-y: hidden;
+    	max-height: 260px;
+    	transition-property: all;
+    	transition-duration: .5s;
+    	transition-timing-function: cubic-bezier(0.25, 0.25, 0.5, 1);
     }
   }
  `
