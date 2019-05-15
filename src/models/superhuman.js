@@ -1,6 +1,10 @@
+import uuidv4 from 'uuid/v4';
+
 export default class Superhuman {
   constructor(name) {
     this.name = name;
+    this.chosen = false;
+    this.id = uuidv4();
     this.stats = [
       {name: 'Health', value: 100},
       {name: 'Intelligence', value: 100},
