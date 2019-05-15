@@ -31,11 +31,25 @@ class App extends Component {
       new Mystique(),
       new Thanos()
     ]
+
+    this.state = {
+      slotOneBusy: false,
+      slotTwoBusy: false,
+    }
   }
 
   render() {
     return (
       <AppBody>
+        <BattleContainer>
+          <Header>Epic Superhuman Battle</Header>
+          <ChosenHero>Pick a hero</ChosenHero>
+          <VSBlock>
+            <VSText>VS</VSText>
+            <FightButton>FIGHT!</FightButton>
+          </VSBlock>
+          <ChosenHero>Pick a hero</ChosenHero>
+        </BattleContainer>
         <HeroesContainer>
             {this.characters.map(x => (
               <CharacterCard image={x.picture}>
@@ -68,6 +82,44 @@ const AppBody = styled(Flex)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`
+const BattleContainer = styled(Flex)`
+  width: 100%;
+  height: 380px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+`
+const Header = styled(Flex)`
+  color: white;
+  font-size: 50px;
+  width: 100%;
+  justify-content: center;
+  min-width: 600px;
+`
+const ChosenHero = styled(Flex)`
+  min-width: 250px;
+  height: 250px;
+  border: 2px dashed grey;
+  color: grey;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+`
+const VSBlock = styled(Flex)`
+  color: white;
+  font-size: 80px;
+  margin: 0px 80px;
+  flex-direction: column;
+`
+const VSText = styled(Flex)`
+  justify-content: center;
+`
+const FightButton = styled.button`
+  color: white;
+  font-size: 40px;
+  background-color: black;
 `
 const HeroesContainer = styled(Flex)`
   width: 90%;
@@ -115,8 +167,6 @@ const CharacterCard = styled.div`
   &:hover {
     .stat {
       visibility: visible;
-      /* transform: translateY(50px); */
-      /* transition-duration: 2s; */
       overflow-y: hidden;
     	max-height: 260px;
     	transition-property: all;

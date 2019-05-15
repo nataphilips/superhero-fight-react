@@ -1,13 +1,15 @@
 export default class Superhuman {
   constructor(name) {
     this.name = name;
-    this.health = 100;
-    this.intelligence = 100;
-    this.strength = 100;
-    this.speed = 100;
-    this.durability = 100;
-    this.power = 100;
-    this.combat = 100
+    this.stats = [
+      {name: 'Health', value: 100},
+      {name: 'Intelligence', value: 100},
+      {name: 'Strength', value: 100},
+      {name: 'Speed', value: 100},
+      {name: 'Durability', value: 100},
+      {name: 'Power', value: 100},
+      {name: 'Combat', value: 100},
+    ]
   }
 
   attacks(character) {
