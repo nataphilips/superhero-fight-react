@@ -33,9 +33,25 @@ class App extends Component {
     ]
 
     this.state = {
-      slotOneBusy: false,
-      slotTwoBusy: false,
+      slotPointer: 0,
+      fightSlots: [undefined, undefined],
     }
+  }
+
+  choose(x) {
+    const newState = this.state;
+    newState.fightSlots[newState.slotPointer] = x;
+    newState.slotPointer = (newState.slotPointer === 0 ? 1 : 0);
+
+    this.setState(newState);
+  }
+
+  clearSlot(i) {
+    const newState = this.state;
+    newState.fightSlots[i] = undefined;
+    newState.slotPointer = i;
+
+    this.setState(newState);
   }
 
   render() {
@@ -43,25 +59,41 @@ class App extends Component {
       <AppBody>
         <BattleContainer>
           <Header>Epic Superhuman Battle</Header>
-          <ChosenHero>Pick a hero</ChosenHero>
+
+          <ChosenHero
+            image={this.state.fightSlots[0] && this.state.fightSlots[0].picture}
+            onClick={() => this.clearSlot(0)}>
+            <PickText image={this.state.fightSlots[0] && this.state.fightSlots[0].picture}>
+              Pick a hero
+            </PickText>
+          </ChosenHero>
+
           <VSBlock>
             <VSText>VS</VSText>
             <FightButton>FIGHT!</FightButton>
           </VSBlock>
-          <ChosenHero>Pick a hero</ChosenHero>
+
+          <ChosenHero
+            image={this.state.fightSlots[1] && this.state.fightSlots[1].picture}
+            onClick={() => this.clearSlot(1)}>
+              <PickText image={this.state.fightSlots[1] && this.state.fightSlots[1].picture}>
+                Pick a hero
+              </PickText>
+          </ChosenHero>
         </BattleContainer>
         <HeroesContainer>
             {this.characters.map(x => (
-              <CharacterCard image={x.picture}>
+              <CharacterCard image={x.picture} key={x.id} onClick={() => this.choose(x)}>
                 <StatsWrapper className="stat">
-                  {x.stats.map(s => ([
-                    <StatsName>
-                      {s.name}
-                    </StatsName>,
-                    <StatsBarWrap>
-                      <StatsBar value={s.value} />
-                    </StatsBarWrap>
-                  ]
+                  {x.stats.map(s => (
+                    <div key={x.id + '-stat-' + s.name}>
+                      <StatsName>
+                        {s.name}
+                      </StatsName>
+                      <StatsBarWrap>
+                        <StatsBar value={s.value} />
+                      </StatsBarWrap>
+                    </div>
                   ))}
                 </StatsWrapper>
               </CharacterCard>
@@ -106,6 +138,13 @@ const ChosenHero = styled(Flex)`
   justify-content: center;
   align-items: center;
   font-size: 20px;
+  background-image: url(${props => props.image});
+  background-size: 250px 250px;
+`
+const PickText = styled(Flex)`
+  ${props => props.image && `
+    visibility: hidden;
+  `}
 `
 const VSBlock = styled(Flex)`
   color: white;
