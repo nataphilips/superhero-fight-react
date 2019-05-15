@@ -2,7 +2,7 @@ import Villain from '../villain'
 
 export default class LexLuthor extends Villain {
   constructor() {
-    super('LexLuthor');
+    super('Lex Luthor');
 
     this.stats = [
       {name: 'Health', value: 100},

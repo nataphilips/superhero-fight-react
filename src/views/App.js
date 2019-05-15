@@ -83,6 +83,7 @@ class App extends Component {
         </BattleContainer>
         <HeroesContainer>
             {this.characters.map(x => (
+              <CardWrapper>
               <CharacterCard image={x.picture} key={x.id} onClick={() => this.choose(x)}>
                 <StatsWrapper className="stat">
                   {x.stats.map(s => (
@@ -97,6 +98,8 @@ class App extends Component {
                   ))}
                 </StatsWrapper>
               </CharacterCard>
+              <HeroName>{x.name}</HeroName>
+              </CardWrapper>
             ))}
         </HeroesContainer>
       </AppBody>
@@ -140,6 +143,7 @@ const ChosenHero = styled(Flex)`
   font-size: 20px;
   background-image: url(${props => props.image});
   background-size: 250px 250px;
+  filter: drop-shadow(2px 0px 20px white);
 `
 const PickText = styled(Flex)`
   ${props => props.image && `
@@ -160,6 +164,21 @@ const FightButton = styled.button`
   font-size: 40px;
   background-color: black;
 `
+const HeroName = styled(Flex)`
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+`
+const CardWrapper = styled(Flex)`
+  color: white;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  border: 2px solid grey;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 3px;
+`
 const HeroesContainer = styled(Flex)`
   width: 90%;
   flex-direction: row;
@@ -169,8 +188,8 @@ const HeroesContainer = styled(Flex)`
   align-items: flex-start;
 `
 const StatsWrapper = styled(Flex)`
-  min-width: 300px;
-  height: 260px;
+  min-width: 250px;
+  height: 250px;
   padding: 20px;
   flex-direction: column;
   visibility: hidden;
@@ -182,10 +201,11 @@ const StatsName = styled(Flex)`
   color: #e9e5ff;
   padding-bottom: 3px;
   text-transform: uppercase;
+  font-size: 13px;
 `
 const StatsBarWrap = styled(Flex)`
   border: 2px solid #e9e5ff;
-  height: 10px;
+  height: 7px;
   border-radius: 3px;
 `
 const StatsBar = styled(Flex)`
@@ -194,20 +214,21 @@ const StatsBar = styled(Flex)`
   background-color: #e9e5ff;
 `
 const CharacterCard = styled.div`
-  min-width: 300px;
-  height: 300px;
+  min-width: 250px;
+  height: 250px;
   margin: 10px;
   background-image: url(${props => props.image});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
+  filter: drop-shadow(2px 0px 5px white);
 
   &:hover {
     .stat {
       visibility: visible;
       overflow-y: hidden;
-    	max-height: 260px;
+    	max-height: 210px;
     	transition-property: all;
     	transition-duration: .5s;
     	transition-timing-function: cubic-bezier(0.25, 0.25, 0.5, 1);

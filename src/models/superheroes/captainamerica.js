@@ -2,8 +2,8 @@ import Superhero from '../superhero'
 
 export default class CaptainAmerica extends Superhero {
   constructor() {
-    super('CaptainAmerica');
-    
+    super('Captain America');
+
     this.stats = [
       {name: 'Health', value: 100},
       {name: 'Intelligence', value: 85},
