@@ -5,24 +5,29 @@ export default class Superhuman {
     this.name = name;
     this.chosen = false;
     this.id = uuidv4();
-    this.stats = [
-      {name: 'Health', value: 100},
-      {name: 'Intelligence', value: 100},
-      {name: 'Strength', value: 100},
-      {name: 'Speed', value: 100},
-      {name: 'Durability', value: 100},
-      {name: 'Power', value: 100},
-      {name: 'Combat', value: 100},
-    ]
+    this.stats = {
+      health: 100,
+      intelligence: 100,
+      strength: 100,
+      speed: 100,
+      durability: 100,
+      power: 100,
+      combat: 100,
+    };
   }
 
   attacks(character) {
-    let fightResult = '';
+    let result = '';
+
     if (!(character instanceof Superhuman)) {
-      fightResult = this.name + ' cannot attack anything';
+      result = this.name + ' cannot attack anything';
     } else {
-      fightResult = this.name + ' attacked ' + character.name;
+      let damage = 10;
+      let health = character.stats.health;
+      character.stats.health = health - damage;
+      result = this.name + ' attacked ' + character.name + ' and his health is now ' + character.stats.health;
     }
-    return fightResult;
+
+    return result;
   }
 }

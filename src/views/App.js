@@ -38,11 +38,16 @@ class App extends Component {
     }
   }
 
+  stats(character) {
+    return Object.keys(character.stats).map(x => ({ name: x, value: character.stats[x] }));
+  }
+
   choose(x) {
     const newState = this.state;
-    newState.fightSlots[newState.slotPointer] = x;
-    newState.slotPointer = (newState.slotPointer === 0 ? 1 : 0);
-
+    if (newState.fightSlots[0] !== x && newState.fightSlots[1] !== x) {
+      newState.fightSlots[newState.slotPointer] = x;
+      newState.slotPointer = (newState.slotPointer === 0 ? 1 : 0);
+    }
     this.setState(newState);
   }
 
@@ -82,11 +87,11 @@ class App extends Component {
           </ChosenHero>
         </BattleContainer>
         <HeroesContainer>
-            {this.characters.map(x => (
-              <CardWrapper>
-              <CharacterCard image={x.picture} key={x.id} onClick={() => this.choose(x)}>
+          {this.characters.map(x => (
+            <CardWrapper key={x.id}>
+              <CharacterCard image={x.picture} onClick={() => this.choose(x)}>
                 <StatsWrapper className="stat">
-                  {x.stats.map(s => (
+                  {this.stats(x).map(s => (
                     <div key={x.id + '-stat-' + s.name}>
                       <StatsName>
                         {s.name}
@@ -99,8 +104,8 @@ class App extends Component {
                 </StatsWrapper>
               </CharacterCard>
               <HeroName>{x.name}</HeroName>
-              </CardWrapper>
-            ))}
+            </CardWrapper>
+          ))}
         </HeroesContainer>
       </AppBody>
     );

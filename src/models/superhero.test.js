@@ -8,7 +8,7 @@ describe('Superhero class', () => {
 
   it('should have starting health at 100', () => {
     const superhero = new Superhero()
-    expect(superhero.health).toBe(100)
+    expect(superhero.stats.health).toBe(100)
   });
 
   it('should be able to name a superhero', () => {
@@ -22,7 +22,7 @@ describe('Superhero class', () => {
 
     const fightResult = spiderman.attacks(aquaman)
 
-    expect(fightResult).toBe('Spiderman attacked Aquaman')
+    expect(fightResult).toBe('Spiderman attacked Aquaman and his health is now 90')
   });
 
   it('should not be able to attack random things', () => {

@@ -8,7 +8,7 @@ describe('Thor class', () => {
 
   it('should have correct stats', () => {
     const thor = new Thor()
-    expect(thor.combat).toBe(100)
-    expect(thor.power).toBe(100)
+    expect(thor.stats.combat).toBe(100)
+    expect(thor.stats.power).toBe(100)
   });
 })

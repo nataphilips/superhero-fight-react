@@ -4,15 +4,15 @@ export default class Magneto extends Villain {
   constructor() {
     super('Magneto');
 
-    this.stats = [
-      {name: 'Health', value: 100},
-      {name: 'Intelligence', value: 90},
-      {name: 'Strength', value: 40},
-      {name: 'Speed', value: 60},
-      {name: 'Durability', value: 80},
-      {name: 'Power', value: 85},
-      {name: 'Combat', value: 70},
-    ]
+    this.stats = {
+      health: 100,
+      intelligence: 90,
+      strength: 40,
+      speed: 60,
+      durability: 80,
+      power: 85,
+      combat: 70,
+    };
     this.picture = '/pictures/magneto.jpg'
   }
 }

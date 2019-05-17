@@ -8,7 +8,7 @@ describe('Superhuman class', () => {
 
   it('should have starting health at 100', () => {
     const character = new Superhuman()
-    expect(character.health).toBe(100)
+    expect(character.stats.health).toBe(100)
   });
 
   it('should be able to name a superhuman', () => {

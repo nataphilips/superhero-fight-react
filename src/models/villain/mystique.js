@@ -4,15 +4,15 @@ export default class Mystique extends Villain {
   constructor() {
     super('Mystique');
 
-    this.stats = [
-      {name: 'Health', value: 100},
-      {name: 'Intelligence', value: 90},
-      {name: 'Strength', value: 15},
-      {name: 'Speed', value: 25},
-      {name: 'Durability', value: 65},
-      {name: 'Power', value: 65},
-      {name: 'Combat', value: 75},
-    ]
+    this.stats = {
+      health: 100,
+      intelligence: 90,
+      strength: 15,
+      speed: 25,
+      durability: 65,
+      power: 65,
+      combat: 75,
+    };
     this.picture = '/pictures/mystique.jpg'
   }
 }

@@ -8,7 +8,7 @@ describe('Thanos class', () => {
 
   it('should have correct stats', () => {
     const thanos = new Thanos()
-    expect(thanos.combat).toBe(80)
-    expect(thanos.power).toBe(100)
+    expect(thanos.stats.combat).toBe(80)
+    expect(thanos.stats.power).toBe(100)
   });
 })

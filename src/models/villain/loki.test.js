@@ -8,7 +8,7 @@ describe('Loki class', () => {
 
   it('should have correct stats', () => {
     const loki = new Loki()
-    expect(loki.combat).toBe(60)
-    expect(loki.power).toBe(100)
+    expect(loki.stats.combat).toBe(60)
+    expect(loki.stats.power).toBe(100)
   });
 })

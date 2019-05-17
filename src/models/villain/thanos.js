@@ -4,15 +4,15 @@ export default class Thanos extends Villain {
   constructor() {
     super('Thanos');
 
-    this.stats = [
-      {name: 'Health', value: 100},
-      {name: 'Intelligence', value: 100},
-      {name: 'Strength', value: 100},
-      {name: 'Speed', value: 100},
-      {name: 'Durability', value: 100},
-      {name: 'Power', value: 100},
-      {name: 'Combat', value: 80},
-    ]
+    this.stats = {
+      health: 100,
+      intelligence: 100,
+      strength: 100,
+      speed: 100,
+      durability: 100,
+      power: 100,
+      combat: 80,
+    };
     this.picture = '/pictures/thanos.png'
   }
 }

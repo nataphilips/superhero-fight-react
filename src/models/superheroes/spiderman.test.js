@@ -8,7 +8,7 @@ describe('Spiderman class', () => {
 
   it('should have correct stats', () => {
     const spiderman = new Spiderman()
-    expect(spiderman.combat).toBe(95)
-    expect(spiderman.power).toBe(75)
+    expect(spiderman.stats.combat).toBe(95)
+    expect(spiderman.stats.power).toBe(75)
   });
 })

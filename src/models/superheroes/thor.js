@@ -3,16 +3,16 @@ import Superhero from '../superhero'
 export default class Thor extends Superhero {
   constructor() {
     super('Thor');
-    
-    this.stats = [
-      {name: 'Health', value: 100},
-      {name: 'Intelligence', value: 85},
-      {name: 'Strength', value: 100},
-      {name: 'Speed', value: 85},
-      {name: 'Durability', value: 100},
-      {name: 'Power', value: 100},
-      {name: 'Combat', value: 100},
-    ]
+
+    this.stats = {
+      health: 100,
+      intelligence: 85,
+      strength: 100,
+      speed: 85,
+      durability: 100,
+      power: 100,
+      combat: 100,
+    };
     this.picture = '/pictures/thor.jpg'
   }
 }
