@@ -16,6 +16,14 @@ export default class Superhuman {
     };
   }
 
+  attack() {
+    return this.stats.strength;
+  }
+
+  defend() {
+    return this.stats.durability;
+  }
+
   attacks(character) {
     let result = '';
 
