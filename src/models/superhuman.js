@@ -24,18 +24,10 @@ export default class Superhuman {
     return this.stats.strength * (this.stats.health / 100);
   }
 
-  attacks(character) {
-    let result = '';
-
-    if (!(character instanceof Superhuman)) {
-      result = this.name + ' cannot attack anything';
-    } else {
-      let damage = 10;
-      let health = character.stats.health;
-      character.stats.health = health - damage;
-      result = this.name + ' attacked ' + character.name + ' and his health is now ' + character.stats.health;
+  canDodge(attacker) {
+    if (this.stats.speed > attacker.stats.speed) {
+      const probabilityOfDodge = 1 - (attacker.stats.speed / this.stats.speed)
+      return probabilityOfDodge > Math.random()
     }
-
-    return result;
   }
 }

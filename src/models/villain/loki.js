@@ -15,4 +15,8 @@ export default class Loki extends Villain {
     };
     this.picture = '/pictures/loki.jpg'
   }
+
+  defend() {
+    return super.defend() * 5
+  }
 }
