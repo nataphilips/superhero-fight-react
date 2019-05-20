@@ -21,7 +21,7 @@ export default class Superhuman {
   }
 
   defend() {
-    return this.stats.durability;
+    return this.stats.strength * (this.stats.health / 100);
   }
 
   attacks(character) {
