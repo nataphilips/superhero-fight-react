@@ -12,54 +12,68 @@ const logNumber = (num) => {
 let i = 1
 
 export default class FightController {
+  constructor() {
+    this.fightMoves = []
+  }
+
   attack(attacker, defender) {
-    console.log(`------------------ round ${i++} -----------------------`.blue)
-    console.log((attacker.name + " attacks " + defender.name).green)
+    this.debug && console.log(`------------------ round ${i++} -----------------------`.blue)
+    this.debug && console.log((attacker.name + " attacks " + defender.name).green)
 
     const attack = attacker.attack();
     const defense = defender.defend();
 
-    let attackPoints;
-    attackPoints = Math.max(0, attack - defense);
-    attackPoints = 0.8 + (attackPoints / 100);
-    attackPoints *= 4;
+    let damage;
+    damage = Math.max(0, attack - defense);
+    damage = 0.8 + (damage / 100);
+    damage *= 4;
 
-    if (defender.canDodge(attacker)) {
+    let dodged = defender.canDodge(attacker)
+    if (dodged) {
       const random = Math.random()
-      if (random > 0.8) {
-        attackPoints = 0
-      } else if (random < 0.3) {
-        attackPoints = attackPoints
-      } else {
-        attackPoints *= Math.random();
-      }
 
-      console.log(defender.name + " dodged!!! only some damaged taken.")
+      if (random > 0.8) {
+        damage = 0
+      } else if (random < 0.3) {
+        damage = damage
+      } else {
+        damage *= Math.random();
+      }
     }
 
-    defender.stats.health -= attackPoints;
+    defender.stats.health -= damage;
 
-    console.log(('Attack points: ' + logNumber(attackPoints)).red)
-    console.log(logName(attacker) + ": " + logNumber(attacker.stats.health))
-    console.log(logName(defender) + ": " + logNumber(defender.stats.health))
+    this.fightMoves.push({
+      attacker: attacker.name,
+      defender: defender.name,
+      attack: attack,
+      defense: defense,
+      damage: damage,
+      dodged: dodged,
+    })
+
+    this.debug && console.log(('Attack points: ' + logNumber(damage)).red)
+    this.debug && console.log(logName(attacker) + ": " + logNumber(attacker.stats.health))
+    this.debug && console.log(logName(defender) + ": " + logNumber(defender.stats.health))
   }
 
-  fight(c1, c2) {
+  fight(c1, c2, debug = true) {
+    this.debug = debug
+    this.fightMoves = []
+
     do {
       this.attack(c1, c2);
       this.attack(c2, c1);
     } while (c1.stats.health > 0 && c2.stats.health > 0);
 
-    const result = [c1.stats.health, c2.stats.health];
-
-    if (c1.stats.health <= 0) {
-      result.push(c1.name + ' is defeated');
+    return {
+      moves: this.fightMoves,
+      attackerHealth: c1.stats.health,
+      defenderHealth: c2.stats.health,
+      winner:
+        (c1.stats.health > 0) ? c1.name :
+        (c2.stats.health > 0) ? c2.name :
+        'None',
     }
-
-    if (c2.stats.health <= 0) {
-      result.push(c2.name + ' is defeated');
-    }
-
-    return result;
   }
 }

@@ -9,10 +9,13 @@ export default class Thor extends Superhero {
       intelligence: 85,
       strength: 100,
       speed: 85,
-      durability: 100,
-      power: 100,
-      combat: 100,
     };
     this.picture = '/pictures/thor.jpg'
+
+    this.superPowers.push({
+      name: 'Hammer',
+      description: '40% bonus to attack',
+      attack: (basePoints) => basePoints * 1.4,
+    })
   }
 }

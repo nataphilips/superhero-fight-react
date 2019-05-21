@@ -3,7 +3,6 @@ import uuidv4 from 'uuid/v4';
 export default class Superhuman {
   constructor(name) {
     this.name = name
-    this.chosen = false
     this.id = uuidv4()
     this.superPowers = []
     this.stats = {
@@ -11,26 +10,21 @@ export default class Superhuman {
       intelligence: 100,
       strength: 100,
       speed: 100,
-      durability: 100,
-      power: 100,
-      combat: 100,
     };
+  }
+
+  refresh() {
+    this.stats.health = 100
   }
 
   attack() {
     return this.superPowers.reduce((total, x) => {
-      if(x.attack) {
-        console.log(this.name + " got bonus attack points!!!")
-      }
         return x.attack ? x.attack(total) : total
     }, this.stats.strength)
   }
 
   defend() {
     return this.superPowers.reduce((total, x) => {
-      if(x.defend) {
-        console.log(this.name + " defends like a boss!!!")
-      }
         return x.defend ? x.defend(total) : total
     }, this.stats.strength * (this.stats.health / 100))
   }
