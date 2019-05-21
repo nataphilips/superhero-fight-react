@@ -28,6 +28,9 @@ export default class Superhuman {
 
   defend() {
     return this.superPowers.reduce((total, x) => {
+      if(x.defend) {
+        console.log(this.name + " defends like a boss!!!")
+      }
         return x.defend ? x.defend(total) : total
     }, this.stats.strength * (this.stats.health / 100))
   }
