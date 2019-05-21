@@ -7,9 +7,15 @@ export default class Loki extends Villain {
     this.stats = {
       health: 100,
       intelligence: 95,
-      strength: 65,
-      speed: 50,
+      strength: 80,
+      speed: 60,
     };
     this.picture = '/pictures/loki.jpg';
+
+    this.superPowers.push({
+      name: 'Master of Magic',
+      description: 'Has additional 50% chance to dodge',
+      dodge: (basePoints) => (basePoints + 0.5),
+    })
   }
 }
