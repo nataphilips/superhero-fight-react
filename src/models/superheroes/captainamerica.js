@@ -9,10 +9,16 @@ export default class CaptainAmerica extends Superhero {
       intelligence: 85,
       strength: 20,
       speed: 40,
-      durability: 55,
-      power: 60,
-      combat: 100,
     };
-    this.picture = '/pictures/captain-america.jpg'
+    this.picture = '/pictures/captain-america.jpg';
+    this.superpower = {
+      name: "Shield",
+      description: "50% better defence"
+    }
   }
+}
+
+defend() {
+  return super.defend() * 1.5;
+}
 }

@@ -1,8 +1,8 @@
 import FightController from './src/models/fightcontroller';
-import Loki from './src/models/villain/loki';
-import Thor from './src/models/superheroes/thor';
+import Hulk from './src/models/superheroes/hulk';
+import Spiderman from './src/models/superheroes/spiderman';
 
 const fightResult = new FightController()
-  .fight(new Thor(), new Loki())
+  .fight(new Hulk(), new Spiderman())
 
 console.log(fightResult)

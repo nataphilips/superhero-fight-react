@@ -2,34 +2,37 @@ import Superhuman from './superhuman'
 
 export default class FightController {
   attack(attacker, defender) {
-    const attack = attacker.attack()
-    const defense = defender.defend()
+    const attack = attacker.attack();
+    const defense = defender.defend();
 
-    let attackPoints
+    let attackPoints;
     attackPoints = Math.max(0, attack - defense);
-    attackPoints = 1 + (attackPoints / 100)
+    attackPoints = 1 + (attackPoints / 100);
 
     if (defender.canDodge(attacker)) {
-      attackPoints = 0
+      attackPoints = 0;
+      console.log(defender.name + " dodged!!!")
     }
 
-    defender.stats.health -= attackPoints
+    defender.stats.health -= attackPoints;
+    console.log(attacker.name + " attacked " + defender.name + " with " + attackPoints)
+    console.log(attacker.name + ": " + attacker.stats.health + ", " + defender.name + ": " + defender.stats.health)
   }
 
   fight(c1, c2) {
     do {
-      this.attack(c1, c2)
-      this.attack(c2, c1)
+      this.attack(c1, c2);
+      this.attack(c2, c1);
     } while (c1.stats.health > 0 && c2.stats.health > 0);
 
     const result = [c1.stats.health, c2.stats.health];
 
     if (c1.stats.health <= 0) {
-      result.push(c1.name + ' is defeated')
+      result.push(c1.name + ' is defeated');
     }
 
     if (c2.stats.health <= 0) {
-      result.push(c2.name + ' is defeated')
+      result.push(c2.name + ' is defeated');
     }
 
     return result;

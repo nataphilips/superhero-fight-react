@@ -9,10 +9,13 @@ export default class Spiderman extends Superhero {
       intelligence: 100,
       strength: 55,
       speed: 70,
-      durability: 75,
-      power: 75,
-      combat: 95,
     };
     this.picture = '/pictures/spiderman.jpg'
+
+    this.superPowers.push({
+      name: 'Spider Web',
+      description: 'Has additional 20% chance to dodge ',
+      dodge: (basePoints) => (basePoints + 0.2),
+    })
   }
 }

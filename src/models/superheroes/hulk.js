@@ -12,7 +12,14 @@ export default class Hulk extends Superhero {
       durability: 100,
       power: 100,
       combat: 85,
-    };
+    }
+
     this.picture = '/pictures/hulk.jpg'
+
+    this.superPowers.push({
+      name: 'Hulk Smash',
+      description: 'Like Khabib',
+      attack: (basePoints) => basePoints * 2,
+    })
   }
 }

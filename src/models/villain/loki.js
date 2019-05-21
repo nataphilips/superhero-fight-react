@@ -9,14 +9,7 @@ export default class Loki extends Villain {
       intelligence: 95,
       strength: 65,
       speed: 50,
-      durability: 85,
-      power: 100,
-      combat: 60,
     };
-    this.picture = '/pictures/loki.jpg'
-  }
-
-  defend() {
-    return super.defend() * 5
+    this.picture = '/pictures/loki.jpg';
   }
 }
