@@ -9,6 +9,7 @@ export default class Thor extends Superhero {
       intelligence: 85,
       strength: 100,
       speed: 85,
+      accuracy: 10,
     };
     this.picture = '/pictures/thor.jpg'
 

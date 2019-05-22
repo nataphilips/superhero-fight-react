@@ -9,9 +9,7 @@ export default class Mystique extends Villain {
       intelligence: 90,
       strength: 15,
       speed: 25,
-      durability: 65,
-      power: 65,
-      combat: 75,
+      accuracy: 10,
     };
     this.picture = '/pictures/mystique.jpg'
   }

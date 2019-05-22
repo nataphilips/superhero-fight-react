@@ -9,9 +9,7 @@ export default class Thanos extends Villain {
       intelligence: 100,
       strength: 100,
       speed: 100,
-      durability: 100,
-      power: 100,
-      combat: 80,
+      accuracy: 10,
     };
     this.picture = '/pictures/thanos.png'
   }

@@ -9,6 +9,7 @@ export default class CaptainAmerica extends Superhero {
       intelligence: 85,
       strength: 60,
       speed: 40,
+      accuracy: 10,
     };
     this.picture = '/pictures/captain-america.jpg';
 

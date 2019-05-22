@@ -9,7 +9,14 @@ export default class Superman extends Superhero {
       intelligence: 100,
       strength: 100,
       speed: 100,
+      accuracy: 10,
     };
     this.picture = '/pictures/superman.jpg'
+
+    this.superPowers.push({
+      name: 'X-ray vision',
+      description: '40% to accuracy',
+      accuracy: (basePoints) => basePoints + 40,
+    })
   }
 }

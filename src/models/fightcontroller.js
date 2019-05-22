@@ -28,7 +28,7 @@ export default class FightController {
     damage = 0.8 + (damage / 100);
     damage *= 4;
 
-    let dodged = defender.canDodge(attacker)
+    let dodged = defender.dodged(attacker)
     if (dodged) {
       const random = Math.random()
 

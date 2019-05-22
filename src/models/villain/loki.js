@@ -9,6 +9,7 @@ export default class Loki extends Villain {
       intelligence: 95,
       strength: 80,
       speed: 60,
+      accuracy: 10,
     };
     this.picture = '/pictures/loki.jpg';
 

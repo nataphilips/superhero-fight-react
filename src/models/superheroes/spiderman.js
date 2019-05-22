@@ -9,6 +9,7 @@ export default class Spiderman extends Superhero {
       intelligence: 100,
       strength: 55,
       speed: 70,
+      accuracy: 10,
     };
     this.picture = '/pictures/spiderman.jpg'
 

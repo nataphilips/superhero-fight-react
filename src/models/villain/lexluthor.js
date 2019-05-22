@@ -9,9 +9,7 @@ export default class LexLuthor extends Villain {
       intelligence: 100,
       strength: 10,
       speed: 15,
-      durability: 20,
-      power: 20,
-      combat: 50,
+      accuracy: 10,
     };
     this.picture = '/pictures/lexluthor.jpg'
   }

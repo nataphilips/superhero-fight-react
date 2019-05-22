@@ -9,9 +9,7 @@ export default class Joker extends Villain {
       intelligence: 100,
       strength: 10,
       speed: 15,
-      durability: 60,
-      power: 45,
-      combat: 70,
+      accuracy: 10,
     };
     this.picture = '/pictures/joker.jpg'
   }

@@ -9,6 +9,7 @@ export default class Hulk extends Superhero {
       intelligence: 95,
       strength: 100,
       speed: 65,
+      accuracy: 10,
     }
 
     this.picture = '/pictures/hulk.jpg'

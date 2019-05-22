@@ -10,6 +10,7 @@ export default class Superhuman {
       intelligence: 100,
       strength: 100,
       speed: 100,
+      accuracy: 50,
     };
   }
 
@@ -29,16 +30,25 @@ export default class Superhuman {
     }, this.stats.strength * (this.stats.health / 100))
   }
 
-  canDodge(attacker) {
+  dodged(attacker) {
     let probabilityOfDodge = 0.05
 
     if (this.stats.speed > attacker.stats.speed) {
       probabilityOfDodge += 1 - (attacker.stats.speed / this.stats.speed)
     }
     probabilityOfDodge = this.superPowers.reduce((total, x) => {
-      return x.dodge ? x.dodge(total) : total
+      return x.dodge ? x.dodged(total) : total
     }, probabilityOfDodge)
+    
+    return (probabilityOfDodge - attacker.accuracy()/100)  > Math.random()
+  }
 
-    return probabilityOfDodge > Math.random()
+  accuracy() {
+    let accuracy = 0;
+    accuracy = this.superPowers.reduce((total, x) => {
+      return x.accuracy ? x.accuracy(total) : total
+    }, this.stats.accuracy)
+
+    return accuracy;
   }
 }

@@ -9,9 +9,7 @@ export default class Magneto extends Villain {
       intelligence: 90,
       strength: 40,
       speed: 60,
-      durability: 80,
-      power: 85,
-      combat: 70,
+      accuracy: 10,  
     };
     this.picture = '/pictures/magneto.jpg'
   }

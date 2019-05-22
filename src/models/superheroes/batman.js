@@ -9,7 +9,9 @@ export default class Batman extends Superhero {
       intelligence: 100,
       strength: 20,
       speed: 30,
+      accuracy: 10,
     };
+
     this.picture = '/pictures/batman.jpg'
 
     this.superPowers.push({
