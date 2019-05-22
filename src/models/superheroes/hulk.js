@@ -11,13 +11,12 @@ export default class Hulk extends Superhero {
       speed: 65,
       accuracy: 10,
     }
-
     this.picture = '/pictures/hulk.jpg'
 
     this.superPowers.push({
       name: 'Hulk Smash',
       description: 'Like Khabib, but 30% of time',
-      attack: (basePoints) => (0.3 > Math.random) ? (basePoints * 2) : basePoints,
+      attack: (basePoints) => (0.3 > Math.random()) ? (basePoints * 2) : basePoints,
     })
   }
 }

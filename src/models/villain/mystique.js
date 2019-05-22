@@ -12,5 +12,11 @@ export default class Mystique extends Villain {
       accuracy: 10,
     };
     this.picture = '/pictures/mystique.jpg'
+
+    this.superPowers.push({
+      name: 'Turnskin',
+      description: 'Has additional 50% chance to dodge',
+      dodge: (basePoints) => (basePoints + 0.5),
+    })
   }
 }

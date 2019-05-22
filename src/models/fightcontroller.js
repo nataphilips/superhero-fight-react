@@ -23,10 +23,10 @@ export default class FightController {
     const attack = attacker.attack();
     const defense = defender.defend();
 
-    let damage;
-    damage = Math.max(0, attack - defense);
-    damage = 0.8 + (damage / 100);
-    damage *= 4;
+    let damage
+    damage = Math.max(0, attack - defense)
+    damage = 0.8 + (damage / 100)
+    damage *= 4
 
     let dodged = defender.dodged(attacker)
     if (dodged) {

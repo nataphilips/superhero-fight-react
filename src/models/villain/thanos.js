@@ -12,5 +12,11 @@ export default class Thanos extends Villain {
       accuracy: 10,
     };
     this.picture = '/pictures/thanos.png'
+
+    this.superPowers.push({
+      name: 'Titan',
+      description: '30% chance to triple attack points',
+      attack: (basePoints) => (0.3 > Math.random()) ? (basePoints * 3) : basePoints,
+    })
   }
 }

@@ -5,6 +5,10 @@ import CaptainAmerica from './src/models/superheroes/captainamerica';
 import Batman from './src/models/superheroes/batman';
 import Superman from './src/models/superheroes/superman';
 import Thor from './src/models/superheroes/thor';
+import LexLuthor from './src/models/villain/lexluthor';
+import Hulk from './src/models/superheroes/hulk';
+import Magneto from './src/models/villain/magneto';
+import Thanos from './src/models/villain/thanos';
 
 const n = (num) => {
   return parseFloat(num).toFixed(2)
@@ -12,66 +16,56 @@ const n = (num) => {
 
 const controller = new FightController()
 
-const superman = new Superman()
-const thor = new Thor()
 const fights = []
 
 for(let i = 0; i < 100; i++) {
-  const r = controller.fight(new Superman(), new Thor(), false)
+  const r = controller.fight(new Thanos(), new Superman(), false)
 
   fights.push(r)
 }
 
-const thorAttacks = fights
-  .reduce((r, x) => r.concat(x.moves),[])
-  .filter(x => x.attacker === 'Thor')
-
-const supermanAttacks = fights
+const p1 = fights
   .reduce((r, x) => r.concat(x.moves),[])
   .filter(x => x.attacker === 'Superman')
 
-console.log('Thor')
-console.log('    won ' + fights.filter(x => x.winner === 'Thor').length)
-console.log('    avg attack ' +
-  thorAttacks
-    .map(x => x.attack)
-    .reduce((a, b) => a + b) / thorAttacks.length
-)
-console.log('    avg defense ' +
-  supermanAttacks
-    .map(x => x.defense)
-    .reduce((a, b) => a + b) / supermanAttacks.length
-)
-console.log('    avg damage ' +
-  thorAttacks
-    .map(x => x.damage)
-    .reduce((a, b) => a + b) / thorAttacks.length
-)
-console.log('    dodging ' +
-  n(supermanAttacks
-    .filter(x => x.dodged).length / supermanAttacks.length) * 100 + '%'
-)
+const p2 = fights
+  .reduce((r, x) => r.concat(x.moves),[])
+  .filter(x => x.attacker === 'Thanos')
 
 console.log('Superman')
 console.log('    won ' + fights.filter(x => x.winner === 'Superman').length)
 console.log('    avg attack ' +
-  supermanAttacks
-    .map(x => x.attack)
-    .reduce((a, b) => a + b) / supermanAttacks.length
+  p1.map(x => x.attack)
+    .reduce((a, b) => a + b) / p1.length
 )
 console.log('    avg defense ' +
-  thorAttacks
-    .map(x => x.defense)
-    .reduce((a, b) => a + b) / thorAttacks.length
+  p2.map(x => x.defense)
+    .reduce((a, b) => a + b) / p2.length
 )
 console.log('    avg damage ' +
-  supermanAttacks
-    .map(x => x.damage)
-    .reduce((a, b) => a + b) / supermanAttacks.length
+  p1.map(x => x.damage)
+    .reduce((a, b) => a + b) / p1.length
 )
 console.log('    dodging ' +
-  n(thorAttacks
-    .filter(x => x.dodged).length / thorAttacks.length) * 100 + '%'
+  n(p2.filter(x => x.dodged).length / p2.length) * 100 + '%'
+)
+
+console.log('Thanos')
+console.log('    won ' + fights.filter(x => x.winner === 'Thanos').length)
+console.log('    avg attack ' +
+  p2.map(x => x.attack)
+    .reduce((a, b) => a + b) / p2.length
+)
+console.log('    avg defense ' +
+  p1.map(x => x.defense)
+    .reduce((a, b) => a + b) / p1.length
+)
+console.log('    avg damage ' +
+  p2.map(x => x.damage)
+    .reduce((a, b) => a + b) / p2.length
+)
+console.log('    dodging ' +
+  n(p1.filter(x => x.dodged).length / p1.length) * 100 + '%'
 )
 
 console.log('Draw ' + fights.filter(x => x.winner === 'None').length)

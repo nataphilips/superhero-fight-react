@@ -12,5 +12,11 @@ export default class LexLuthor extends Villain {
       accuracy: 10,
     };
     this.picture = '/pictures/lexluthor.jpg'
+
+    this.superPowers.push({
+      name: 'Connections everywhere',
+      description: 'Has additional 50% chance to dodge',
+      dodge: (basePoints) => (basePoints + 0.5),
+    })
   }
 }
