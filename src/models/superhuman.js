@@ -30,6 +30,12 @@ export default class Superhuman {
     }, this.stats.strength * (this.stats.health / 100))
   }
 
+  reduceDefese() {
+    return this.superPowers.reduce((total, x) => {
+        return x.reduceDefese ? x.reduceDefese(total) : total
+    }, 1)
+  }
+
   dodged(attacker) {
     let probabilityOfDodge = 0.05
 

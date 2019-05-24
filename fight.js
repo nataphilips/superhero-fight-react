@@ -19,21 +19,21 @@ const controller = new FightController()
 
 const fights = []
 
-for(let i = 0; i < 1000; i++) {
-  const r = controller.fight(new Joker(), new Thor(), false)
+for(let i = 0; i < 100; i++) {
+  const r = controller.fight(new Joker(), new LexLuthor(), false)
 
   fights.push(r)
 }
 
-console.log(fights
-  .reduce((r, x) => r.concat(x.moves),[]))
+// console.log(fights
+//   .reduce((r, x) => r.concat(x.moves),[]))
 const p1 = fights
   .reduce((r, x) => r.concat(x.moves),[])
   .filter(x => x.attacker === 'Joker')
 
 const p2 = fights
   .reduce((r, x) => r.concat(x.moves),[])
-  .filter(x => x.attacker === 'Thor')
+  .filter(x => x.attacker === 'Lex Luthor')
 
 console.log('Joker')
 console.log('    won ' + fights.filter(x => x.winner === 'Joker').length)
@@ -54,9 +54,9 @@ console.log('    dodging ' +
   n(p2.filter(x => x.dodged).length / p2.length) * 100 + '%'
 )
 
-console.log('Thor')
-console.log('    won ' + fights.filter(x => x.winner === 'Thor').length)
-console.log('    escaped from the battlefield ' + fights.filter(x => x.escaper === 'Thor').length)
+console.log('LexLuthor')
+console.log('    won ' + fights.filter(x => x.winner === 'Lex Luthor').length)
+console.log('    escaped from the battlefield ' + fights.filter(x => x.escaper === 'Lex Luthor').length)
 console.log('    avg attack ' +
   p2.map(x => x.attack)
     .reduce((a, b) => a + b) / p2.length

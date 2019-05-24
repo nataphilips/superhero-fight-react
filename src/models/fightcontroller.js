@@ -21,7 +21,7 @@ export default class FightController {
     this.debug && console.log((attacker.name + " attacks " + defender.name).green)
 
     const attack = attacker.attack();
-    const defense = defender.defend();
+    const defense = defender.defend() * attacker.reduceDefese();
 
     let damage
     damage = Math.max(0, attack - defense)
@@ -83,7 +83,7 @@ export default class FightController {
         break;
       }
 
-    } while (c1.stats.health > 0 && c2.s  tats.health > 0 && !player2Escaped && !player1Escaped);
+    } while (c1.stats.health > 0 && c2.stats.health > 0 && !player2Escaped && !player1Escaped);
 
     return {
       moves: this.fightMoves,
