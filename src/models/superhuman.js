@@ -51,4 +51,13 @@ export default class Superhuman {
       return x.accuracy ? x.accuracy(total) : total
     }, this.stats.accuracy)
   }
+
+  ranAway(attacker) {
+    let chanceToRun = 0.1;
+    let intelligenceDelta = this.stats.intelligence - attacker.stats.intelligence;
+    let healthDelta = attacker.stats.health - this.stats.health;
+    if (intelligenceDelta >= 10 && healthDelta > 50) {
+      return chanceToRun > Math.random()
+    }
+  }
 }

@@ -9,6 +9,7 @@ import LexLuthor from './src/models/villain/lexluthor';
 import Hulk from './src/models/superheroes/hulk';
 import Magneto from './src/models/villain/magneto';
 import Thanos from './src/models/villain/thanos';
+import Joker from './src/models/villain/joker';
 
 const n = (num) => {
   return parseFloat(num).toFixed(2)
@@ -18,22 +19,25 @@ const controller = new FightController()
 
 const fights = []
 
-for(let i = 0; i < 100; i++) {
-  const r = controller.fight(new Thanos(), new Superman(), false)
+for(let i = 0; i < 1000; i++) {
+  const r = controller.fight(new Joker(), new Thor(), false)
 
   fights.push(r)
 }
 
+console.log(fights
+  .reduce((r, x) => r.concat(x.moves),[]))
 const p1 = fights
   .reduce((r, x) => r.concat(x.moves),[])
-  .filter(x => x.attacker === 'Superman')
+  .filter(x => x.attacker === 'Joker')
 
 const p2 = fights
   .reduce((r, x) => r.concat(x.moves),[])
-  .filter(x => x.attacker === 'Thanos')
+  .filter(x => x.attacker === 'Thor')
 
-console.log('Superman')
-console.log('    won ' + fights.filter(x => x.winner === 'Superman').length)
+console.log('Joker')
+console.log('    won ' + fights.filter(x => x.winner === 'Joker').length)
+console.log('    escaped from the battlefield ' + fights.filter(x => x.escaper === 'Joker').length)
 console.log('    avg attack ' +
   p1.map(x => x.attack)
     .reduce((a, b) => a + b) / p1.length
@@ -50,8 +54,9 @@ console.log('    dodging ' +
   n(p2.filter(x => x.dodged).length / p2.length) * 100 + '%'
 )
 
-console.log('Thanos')
-console.log('    won ' + fights.filter(x => x.winner === 'Thanos').length)
+console.log('Thor')
+console.log('    won ' + fights.filter(x => x.winner === 'Thor').length)
+console.log('    escaped from the battlefield ' + fights.filter(x => x.escaper === 'Thor').length)
 console.log('    avg attack ' +
   p2.map(x => x.attack)
     .reduce((a, b) => a + b) / p2.length

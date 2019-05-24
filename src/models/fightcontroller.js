@@ -45,7 +45,9 @@ export default class FightController {
 
     this.fightMoves.push({
       attacker: attacker.name,
+      attackerHealth: attacker.stats.health,
       defender: defender.name,
+      defenderHealth: defender.stats.health,
       attack: attack,
       defense: defense,
       damage: damage,
@@ -61,10 +63,27 @@ export default class FightController {
     this.debug = debug
     this.fightMoves = []
 
+    let player1Escaped;
+    let player2Escaped;
+
     do {
-      this.attack(c1, c2);
-      this.attack(c2, c1);
-    } while (c1.stats.health > 0 && c2.stats.health > 0);
+      player2Escaped = c2.ranAway(c1);
+      if (!player2Escaped) {
+        this.attack(c1, c2);
+      } else {
+        c2.stats.health = 0;
+        break;
+      }
+
+      player1Escaped = c1.ranAway(c2);
+      if (!player1Escaped) {
+        this.attack(c2, c1);
+      } else {
+        c1.stats.health = 0;
+        break;
+      }
+
+    } while (c1.stats.health > 0 && c2.s  tats.health > 0 && !player2Escaped && !player1Escaped);
 
     return {
       moves: this.fightMoves,
@@ -74,6 +93,10 @@ export default class FightController {
         (c1.stats.health > 0) ? c1.name :
         (c2.stats.health > 0) ? c2.name :
         'None',
+      escaper:
+        (player2Escaped) ? (c2.name) :
+        (player1Escaped) ? (c1.name) :
+        'None'
     }
   }
 }
