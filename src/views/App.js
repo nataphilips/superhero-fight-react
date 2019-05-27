@@ -12,6 +12,7 @@ import Loki from '../models/villain/loki';
 import Magneto from '../models/villain/magneto';
 import Mystique from '../models/villain/mystique';
 import Thanos from '../models/villain/thanos';
+import FightController from '../models/fightcontroller';
 
 class App extends Component {
   constructor(props) {
@@ -35,6 +36,8 @@ class App extends Component {
     this.state = {
       slotPointer: 0,
       fightSlots: [undefined, undefined],
+      displayResult: false,
+      battleResult: {},
     }
   }
 
@@ -59,6 +62,13 @@ class App extends Component {
     this.setState(newState);
   }
 
+  battle() {
+    const controller = new FightController()
+    this.setState({ displayResult: true })
+    const battleResult = controller.fight(this.state.fightSlots[0], this.state.fightSlots[1], false);
+    this.setState({ battleResult : battleResult});
+  }
+
   render() {
     return (
       <AppBody>
@@ -73,10 +83,16 @@ class App extends Component {
             </PickText>
           </ChosenHero>
 
-          <VSBlock>
-            <VSText>VS</VSText>
-            <FightButton>FIGHT!</FightButton>
-          </VSBlock>
+          <Battlefield>
+          <ImageBattle />
+            <VSBlock hidden={this.state.displayResult}>
+              <VSText>VS</VSText>
+              <FightButton onClick={() => this.battle()}>FIGHT!</FightButton>
+            </VSBlock>
+            <BattleResult hidden={!this.state.displayResult}>
+              {this.state.battleResult.winner} WON
+            </BattleResult>
+          </Battlefield>
 
           <ChosenHero
             image={this.state.fightSlots[1] && this.state.fightSlots[1].picture}
@@ -124,8 +140,10 @@ const AppBody = styled(Flex)`
   align-items: center;
 `
 const BattleContainer = styled(Flex)`
-  width: 100%;
-  height: 380px;
+  min-width: 890px;
+  width: 80%;
+  min-height: 380px;
+  height: 30%;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
@@ -160,6 +178,30 @@ const VSBlock = styled(Flex)`
   font-size: 80px;
   margin: 0px 80px;
   flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-100%, -50%);
+  background: rgba(200,200,200,0.6);
+  border-radius: 10%;
+  ${props => props.hidden && `
+    visibility: hidden;
+  `}
+`
+const BattleResult = styled(Flex)`
+  color: white;
+  font-size: 40px;
+  margin: 0px 80px;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-100%, -50%);
+  background: rgba(200,200,200,0.6);
+  border-radius: 10%;
+  ${props => props.hidden && `
+    visibility: hidden;
+  `}
 `
 const VSText = styled(Flex)`
   justify-content: center;
@@ -168,6 +210,24 @@ const FightButton = styled.button`
   color: white;
   font-size: 40px;
   background-color: black;
+`
+const Battlefield = styled(Flex)`
+  min-width: 350px;
+  height: 250px;
+  border: 2px grey solid;
+  flex-direction: column;
+  margin: 10px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`
+const ImageBattle = styled(Flex)`
+  min-width: 350px;
+  height: 250px;
+  flex-direction: column;
+  background-image: url("pictures/dc-vs-marvel.jpg");
+  background-size: cover;
+  opacity: 0.5;
 `
 const HeroName = styled(Flex)`
   align-items: center;
