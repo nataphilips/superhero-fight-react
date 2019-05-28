@@ -87,6 +87,9 @@ export default class FightController {
 
     const p1 = this.fightMoves.filter(x => x.attacker === c1.name)
     const p2 = this.fightMoves.filter(x => x.attacker === c2.name)
+    const n = (num) => {
+      return parseFloat(num).toFixed(2)
+    }
 
     return {
       moves: this.fightMoves,
@@ -95,21 +98,21 @@ export default class FightController {
       winner:
         (c1.stats.health > 0) ? c1.name :
         (c2.stats.health > 0) ? c2.name :
-        'None',
+        'No one',
       escaper:
         (player2Escaped) ? (c2.name) :
         (player1Escaped) ? (c1.name) :
         'None',
       p1AvgDamage:
-        p1.map(x => x.damage)
-          .reduce((a, b) => a + b) / p1.length,
+        n(p1.map(x => x.damage)
+          .reduce((a, b) => a + b) / p1.length),
       p2AvgDamage:
-        p2.map(x => x.damage)
-          .reduce((a, b) => a + b) / p2.length,
+        n(p2.map(x => x.damage)
+          .reduce((a, b) => a + b) / p2.length),
       p1Dodging:
-        p2.filter(x => x.dodged).length / p2.length,
+        n(p2.filter(x => x.dodged).length / p2.length * 100),
       p2Dodging:
-        p1.filter(x => x.dodged).length / p1.length,
+        n(p1.filter(x => x.dodged).length / p1.length * 100),
     }
   }
 }

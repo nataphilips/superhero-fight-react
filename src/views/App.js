@@ -90,7 +90,29 @@ class App extends Component {
               <FightButton onClick={() => this.battle()}>FIGHT!</FightButton>
             </VSBlock>
             <BattleResult hidden={!this.state.displayResult}>
-              {this.state.battleResult.winner} WON
+              {this.state.battleResult.escaper === 'None' && (
+                <Winner>
+                  {this.state.battleResult.winner} won
+                </Winner>
+              )}
+              {this.state.battleResult.escaper !== 'None' && (
+                <Winner>
+                  {this.state.battleResult.escaper} ESCAPED!
+                </Winner>
+              )}
+              <ResultStatsWrapper>
+                <ResultStats>
+                  Avg Damage: {this.state.battleResult.p1AvgDamage}
+                  <br />
+                  Avg Dodging: {this.state.battleResult.p1Dodging}%
+                </ResultStats>
+                <ResultStats>
+                  Avg Damage: {this.state.battleResult.p2AvgDamage}
+                  <br />
+                  Avg Dodging: {this.state.battleResult.p2Dodging}%
+                </ResultStats>
+              </ResultStatsWrapper>
+              <FightButton small={true} onClick={() => this.battle()}>FIGHT</FightButton>
             </BattleResult>
           </Battlefield>
 
@@ -107,7 +129,7 @@ class App extends Component {
             <CardWrapper key={x.id}>
               <CharacterCard image={x.picture} onClick={() => this.choose(x)}>
                 <StatsWrapper className="stat">
-                  {this.stats(x).map(s => (
+                  {this.stats(x).map(s => (s.name != "accuracy" &&
                     <div key={x.id + '-stat-' + s.name}>
                       <StatsName>
                         {s.name}
@@ -115,6 +137,16 @@ class App extends Component {
                       <StatsBarWrap>
                         <StatsBar value={s.value} />
                       </StatsBarWrap>
+                    </div>
+                  ))}
+                  {x.superPowers.map(sp => (
+                    <div key={x.id + '-pow-'}>
+                      <StatsName name={true}>
+                        {sp.name}
+                      </StatsName>
+                      <StatsName>
+                        {sp.description}
+                      </StatsName>
                     </div>
                   ))}
                 </StatsWrapper>
@@ -159,7 +191,7 @@ const Header = styled(Flex)`
 const ChosenHero = styled(Flex)`
   min-width: 250px;
   height: 250px;
-  border: 2px dashed grey;
+  border: 2px solid grey;
   color: grey;
   justify-content: center;
   align-items: center;
@@ -167,6 +199,7 @@ const ChosenHero = styled(Flex)`
   background-image: url(${props => props.image});
   background-size: 250px 250px;
   filter: drop-shadow(2px 0px 20px white);
+  border-radius: 5%;
 `
 const PickText = styled(Flex)`
   ${props => props.image && `
@@ -190,18 +223,37 @@ const VSBlock = styled(Flex)`
 `
 const BattleResult = styled(Flex)`
   color: white;
-  font-size: 40px;
-  margin: 0px 80px;
-  flex-direction: column;
+  font-size: 36px;
+  width: 100%;
+  height: 100%;
+  flex-direction:column;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-100%, -50%);
-  background: rgba(200,200,200,0.6);
-  border-radius: 10%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.6);
+  border-radius: 5%;
+  justify-content: space-around;
+  align-items: center;
   ${props => props.hidden && `
     visibility: hidden;
   `}
+`
+const ResultStatsWrapper = styled(Flex)`
+  justify-content: space-between;
+  flex-direction: row;
+  width: 90%;
+`
+const Winner = styled(Flex)`
+  justify-content: center;
+`
+const ResultStats = styled(Flex)`
+  justify-content: center;
+  background: rgba(200,200,200,0.5);
+  font-size: 18px;
+  width: 130px;
+  padding: 5px;
+  border-radius: 10%;
 `
 const VSText = styled(Flex)`
   justify-content: center;
@@ -210,6 +262,11 @@ const FightButton = styled.button`
   color: white;
   font-size: 40px;
   background-color: black;
+  border-radius: 5%;
+  ${props => props.small && `
+    font-size: 26px;
+    border-radius: 5%;
+  `}
 `
 const Battlefield = styled(Flex)`
   min-width: 350px;
@@ -220,6 +277,7 @@ const Battlefield = styled(Flex)`
   align-items: center;
   justify-content: center;
   position: relative;
+  border-radius: 5%;
 `
 const ImageBattle = styled(Flex)`
   min-width: 350px;
@@ -228,6 +286,7 @@ const ImageBattle = styled(Flex)`
   background-image: url("pictures/dc-vs-marvel.jpg");
   background-size: cover;
   opacity: 0.5;
+  border-radius: 5%;
 `
 const HeroName = styled(Flex)`
   align-items: center;
@@ -263,10 +322,15 @@ const StatsWrapper = styled(Flex)`
 `
 const StatsName = styled(Flex)`
   width: 100%;
+  max-width: 250px;
   color: #e9e5ff;
   padding-bottom: 3px;
   text-transform: uppercase;
   font-size: 13px;
+  ${props => props.name && `
+    font-weight: bold;
+    margin-top: 10px;
+  `}
 `
 const StatsBarWrap = styled(Flex)`
   border: 2px solid #e9e5ff;
@@ -288,6 +352,7 @@ const CharacterCard = styled.div`
   background-repeat: no-repeat;
   cursor: pointer;
   filter: drop-shadow(2px 0px 5px white);
+  border-radius: 5%;
 
   &:hover {
     .stat {
