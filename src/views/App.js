@@ -170,6 +170,7 @@ const AppBody = styled(Flex)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: 'Roboto', sans-serif;
 `
 const BattleContainer = styled(Flex)`
   min-width: 890px;
@@ -263,6 +264,7 @@ const FightButton = styled.button`
   font-size: 40px;
   background-color: black;
   border-radius: 5%;
+  font-family: 'Roboto', sans-serif;
   ${props => props.small && `
     font-size: 26px;
     border-radius: 5%;
