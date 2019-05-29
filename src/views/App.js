@@ -87,7 +87,12 @@ class App extends Component {
           <ImageBattle />
             <VSBlock hidden={this.state.displayResult}>
               <VSText>VS</VSText>
-              <FightButton onClick={() => this.battle()}>FIGHT!</FightButton>
+              <Button onClick={() => this.battle()}>
+                <ButtonTxt className="btnText">FIGHT!</ButtonTxt>
+                <ButtonTwo className="btnTwo">
+                  <Hand>GO!</Hand>
+                </ButtonTwo>
+              </Button>
             </VSBlock>
             <BattleResult hidden={!this.state.displayResult}>
               {this.state.battleResult.escaper === 'None' && (
@@ -125,6 +130,7 @@ class App extends Component {
           </ChosenHero>
         </BattleContainer>
         <HeroesContainer>
+
           {this.characters.map(x => (
             <CardWrapper key={x.id}>
               <CharacterCard image={x.picture} onClick={() => this.choose(x)}>
@@ -209,13 +215,14 @@ const PickText = styled(Flex)`
 `
 const VSBlock = styled(Flex)`
   color: white;
+  width: 220px;
   font-size: 80px;
   margin: 0px 80px;
   flex-direction: column;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-100%, -50%);
+  transform: translate(-85%, -50%);
   background: rgba(200,200,200,0.6);
   border-radius: 10%;
   ${props => props.hidden && `
@@ -269,6 +276,56 @@ const FightButton = styled.button`
     font-size: 26px;
     border-radius: 5%;
   `}
+`
+const Button = styled(Flex)`
+  background: #3D4C53;
+  margin: 20px auto;
+  width: 200px;
+  height: 50px;
+  overflow: hidden;
+  text-align: center;
+  transition: .2s;
+  font-size: 32px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 1px 2px rgba(0,0,0,.2);
+  border-radius: 5px;
+  &:hover {
+    .btnTwo {
+      left: -195px;
+    }
+    .btnText {
+      margin-left: 65px;
+      left: -130px;
+    }
+  }
+  &:active {
+    box-shadow: 0px 5px 6px rgba(0,0,0,0.3);
+  }
+`
+const ButtonTwo = styled(Flex)`
+  position: relative;
+  width: 80px;
+  height: 50px;
+  padding-top: 2px;
+  background: #26A69A;
+  left: -250px;
+  transition: .3s;
+  font-size: 40px;
+`
+const ButtonTxt = styled(Flex)`
+  color: white;
+  transition: .3s;
+  padding-left: 90px;
+`
+const Hand = styled(Flex)`
+  color: #FFF;
+  width: 80px;
+  font-size: 16px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
 `
 const Battlefield = styled(Flex)`
   min-width: 350px;
