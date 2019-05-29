@@ -135,7 +135,7 @@ class App extends Component {
             <CardWrapper key={x.id}>
               <CharacterCard image={x.picture} onClick={() => this.choose(x)}>
                 <StatsWrapper className="stat">
-                  {this.stats(x).map(s => (s.name != "accuracy" &&
+                  {this.stats(x).map(s => (s.name != "accuracy" && s.name != "health" &&
                     <div key={x.id + '-stat-' + s.name}>
                       <StatsName>
                         {s.name}
