@@ -221,6 +221,7 @@ const Header = styled(Flex)`
   width: 100%;
   justify-content: center;
   min-width: 600px;
+  filter: drop-shadow(5px 7px 0px #201F21);
 `
 const ChosenHero = styled(Flex)`
   min-width: 250px;
@@ -378,6 +379,7 @@ const HeroName = styled(Flex)`
   justify-content: center;
   padding-bottom: 10px;
   text-transform: uppercase;
+  filter: drop-shadow(5px 5px 1px #201F21);
 `
 const CardWrapper = styled(Flex)`
   color: white;
