@@ -15,9 +15,9 @@ import Thanos from '../models/villain/thanos';
 import FightController from '../models/fightcontroller';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFistRaised } from '@fortawesome/free-solid-svg-icons';
+import { faFistRaised, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faFistRaised)
+library.add(faFistRaised, faTimesCircle)
 
 class App extends Component {
   constructor(props) {
@@ -138,10 +138,10 @@ class App extends Component {
                 </ButtonTwo>
               </Button>
               <Button small={true} onClick={() => this.reset()}>
-                <ButtonTxt small={true} className="btnText">RESET</ButtonTxt>
+                <ButtonTxt className="btnText">RESET</ButtonTxt>
                 <ButtonTwo small={true} className="btnTwo">
-                  <Hand small={true}>
-                    <FontAwesomeIcon icon="fist-raised" size="2x" />
+                  <Hand>
+                    <FontAwesomeIcon icon="times-circle" size="2x" />
                   </Hand>
                 </ButtonTwo>
               </Button>
@@ -293,17 +293,6 @@ const ResultStats = styled(Flex)`
 const VSText = styled(Flex)`
   justify-content: center;
 `
-const FightButton = styled.button`
-  color: white;
-  font-size: 40px;
-  background-color: black;
-  border-radius: 5%;
-  font-family: 'Roboto', sans-serif;
-  ${props => props.small && `
-    font-size: 26px;
-    border-radius: 5%;
-  `}
-`
 
 const Button = styled(Flex)`
   background: #201f21;
@@ -330,7 +319,7 @@ const Button = styled(Flex)`
     .btnTwo {
       left: -195px;
       ${props => props.small && `
-        left: -180px;
+        left: -175px;
         `}
     }
     .btnText {
