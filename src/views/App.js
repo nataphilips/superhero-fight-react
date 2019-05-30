@@ -13,6 +13,11 @@ import Magneto from '../models/villain/magneto';
 import Mystique from '../models/villain/mystique';
 import Thanos from '../models/villain/thanos';
 import FightController from '../models/fightcontroller';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFistRaised } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faFistRaised)
 
 class App extends Component {
   constructor(props) {
@@ -69,12 +74,18 @@ class App extends Component {
     this.setState({ battleResult : battleResult});
   }
 
+  reset() {
+    this.clearSlot(0);
+    this.clearSlot(1);
+    this.setState({ battleResult : {} });
+    this.setState({ displayResult: false })
+  }
+
   render() {
     return (
       <AppBody>
         <BattleContainer>
           <Header>Epic Superhuman Battle</Header>
-
           <ChosenHero
             image={this.state.fightSlots[0] && this.state.fightSlots[0].picture}
             onClick={() => this.clearSlot(0)}>
@@ -82,7 +93,6 @@ class App extends Component {
               Pick a hero
             </PickText>
           </ChosenHero>
-
           <Battlefield>
           <ImageBattle />
             <VSBlock hidden={this.state.displayResult}>
@@ -90,7 +100,9 @@ class App extends Component {
               <Button onClick={() => this.battle()}>
                 <ButtonTxt className="btnText">FIGHT!</ButtonTxt>
                 <ButtonTwo className="btnTwo">
-                  <Hand>GO!</Hand>
+                  <Hand>
+                    <FontAwesomeIcon icon="fist-raised" size="2x" spin />
+                  </Hand>
                 </ButtonTwo>
               </Button>
             </VSBlock>
@@ -117,7 +129,22 @@ class App extends Component {
                   Avg Dodging: {this.state.battleResult.p2Dodging}%
                 </ResultStats>
               </ResultStatsWrapper>
-              <FightButton small={true} onClick={() => this.battle()}>FIGHT</FightButton>
+              <Button small={true} onClick={() => this.battle()}>
+                <ButtonTxt className="btnText">FIGHT!</ButtonTxt>
+                <ButtonTwo className="btnTwo">
+                  <Hand>
+                    <FontAwesomeIcon icon="fist-raised" size="2x" />
+                  </Hand>
+                </ButtonTwo>
+              </Button>
+              <Button small={true} onClick={() => this.reset()}>
+                <ButtonTxt small={true} className="btnText">RESET</ButtonTxt>
+                <ButtonTwo small={true} className="btnTwo">
+                  <Hand small={true}>
+                    <FontAwesomeIcon icon="fist-raised" size="2x" />
+                  </Hand>
+                </ButtonTwo>
+              </Button>
             </BattleResult>
           </Battlefield>
 
@@ -135,7 +162,7 @@ class App extends Component {
             <CardWrapper key={x.id}>
               <CharacterCard image={x.picture} onClick={() => this.choose(x)}>
                 <StatsWrapper className="stat">
-                  {this.stats(x).map(s => (s.name != "accuracy" && s.name != "health" &&
+                  {this.stats(x).map(s => (s.name !== "accuracy" && s.name !== "health" &&
                     <div key={x.id + '-stat-' + s.name}>
                       <StatsName>
                         {s.name}
@@ -170,7 +197,7 @@ const Flex = styled.div`
   display: flex;
 `
 const AppBody = styled(Flex)`
-  background: #5d5b66;
+  background: #404040;
   height: 100%;
   width: 100%;
   flex-direction: column;
@@ -277,8 +304,9 @@ const FightButton = styled.button`
     border-radius: 5%;
   `}
 `
+
 const Button = styled(Flex)`
-  background: #3D4C53;
+  background: #201f21;
   margin: 20px auto;
   width: 200px;
   height: 50px;
@@ -291,9 +319,19 @@ const Button = styled(Flex)`
   justify-content: center;
   box-shadow: 0px 1px 2px rgba(0,0,0,.2);
   border-radius: 5px;
+  ${props => props.small && `
+    font-size: 24px;
+    border-radius: 5%;
+    min-height: 40px;
+    margin: 5px auto;
+    filter: drop-shadow(2px 0px 5px white);
+    `}
   &:hover {
     .btnTwo {
       left: -195px;
+      ${props => props.small && `
+        left: -180px;
+        `}
     }
     .btnText {
       margin-left: 65px;
@@ -309,10 +347,10 @@ const ButtonTwo = styled(Flex)`
   width: 80px;
   height: 50px;
   padding-top: 2px;
-  background: #26A69A;
+  background: #bf0b26;
   left: -250px;
   transition: .3s;
-  font-size: 40px;
+  font-size: 60px;
 `
 const ButtonTxt = styled(Flex)`
   color: white;
@@ -376,8 +414,9 @@ const StatsWrapper = styled(Flex)`
   padding: 20px;
   flex-direction: column;
   visibility: hidden;
-  background-color: rgba(77, 73, 96, 0.7);
+  background-color: rgba(68, 68, 68, 0.7);
   max-height: 0;
+  border-radius: 5%;
 `
 const StatsName = styled(Flex)`
   width: 100%;
