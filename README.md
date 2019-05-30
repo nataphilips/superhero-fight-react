@@ -1,5 +1,7 @@
 ## `about the project`
 
+You can test it here [Click to play](https://superhuman-battle-react.herokuapp.com/) 
+
 Provides an opportunity to check which superhero or supervillain is stronger (with a fair share of luck for each :)).
 
 Key statistics are: intelligence, strength and speed. 
@@ -20,4 +22,4 @@ Reset the fighting pair of characters by clicking on the portraits showing who i
 * Basic animation
 
 
-Feel free to test it [Click to play](https://superhuman-battle-react.herokuapp.com/) 
+
