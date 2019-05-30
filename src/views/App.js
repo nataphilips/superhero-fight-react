@@ -345,7 +345,7 @@ const Button = styled(Flex)`
     `}
   &:hover {
     .btnTwo {
-      left: -195px;
+      left: -180px;
       ${props => props.small && `
         left: -175px;
         `}
