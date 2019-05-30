@@ -203,7 +203,7 @@ const AppBody = styled(Flex)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Oswald', sans-serif;
 `
 const BattleContainer = styled(Flex)`
   min-width: 890px;
@@ -217,7 +217,7 @@ const BattleContainer = styled(Flex)`
 `
 const Header = styled(Flex)`
   color: white;
-  font-size: 50px;
+  font-size: 60px;
   width: 100%;
   justify-content: center;
   min-width: 600px;
@@ -293,7 +293,6 @@ const ResultStats = styled(Flex)`
 const VSText = styled(Flex)`
   justify-content: center;
 `
-
 const Button = styled(Flex)`
   background: #201f21;
   margin: 20px auto;
@@ -378,6 +377,7 @@ const HeroName = styled(Flex)`
   align-items: center;
   justify-content: center;
   padding-bottom: 10px;
+  text-transform: uppercase;
 `
 const CardWrapper = styled(Flex)`
   color: white;
