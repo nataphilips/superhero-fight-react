@@ -119,14 +119,32 @@ class App extends Component {
               )}
               <ResultStatsWrapper>
                 <ResultStats>
-                  Avg Damage: {this.state.battleResult.p1AvgDamage}
-                  <br />
-                  Avg Dodging: {this.state.battleResult.p1Dodging}%
+                  <ResultStat>
+                    Avg Damage:
+                      <Num>
+                        {this.state.battleResult.p1AvgDamage}
+                      </Num>
+                  </ResultStat>
+                  <ResultStat>
+                  Avg Dodging:
+                  <Num>
+                    {this.state.battleResult.p1Dodging}%
+                  </Num>
+                  </ResultStat>
                 </ResultStats>
                 <ResultStats>
-                  Avg Damage: {this.state.battleResult.p2AvgDamage}
-                  <br />
-                  Avg Dodging: {this.state.battleResult.p2Dodging}%
+                  <ResultStat>
+                    Avg Damage:
+                    <Num>
+                      {this.state.battleResult.p2AvgDamage}
+                    </Num>
+                  </ResultStat>
+                  <ResultStat>
+                    Avg Dodging:
+                      <Num>
+                        {this.state.battleResult.p2Dodging}%
+                      </Num>
+                  </ResultStat>
                 </ResultStats>
               </ResultStatsWrapper>
               <Button small={true} onClick={() => this.battle()}>
@@ -286,10 +304,20 @@ const Winner = styled(Flex)`
 const ResultStats = styled(Flex)`
   justify-content: center;
   background: rgba(200,200,200,0.5);
-  font-size: 18px;
-  width: 130px;
+  font-size: 16px;
+  width: 140px;
   padding: 5px;
   border-radius: 10%;
+  flex-direction: column;
+  max-height: 50px;
+`
+const ResultStat = styled(Flex)`
+  flex-direction: row;
+`
+const Num = styled.span`
+  color: black;
+  margin-left: 10px;
+  font-weight: 600;
 `
 const VSText = styled(Flex)`
   justify-content: center;
