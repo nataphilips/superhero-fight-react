@@ -445,6 +445,7 @@ const StatsName = styled(Flex)`
   max-width: 250px;
   color: #e9e5ff;
   padding-bottom: 3px;
+  padding-top: 3px;
   text-transform: uppercase;
   font-size: 13px;
   ${props => props.name && `
