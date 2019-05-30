@@ -300,12 +300,15 @@ const ResultStatsWrapper = styled(Flex)`
 `
 const Winner = styled(Flex)`
   justify-content: center;
+  color: #cc001e;
+  text-transform: uppercase;
+  filter: drop-shadow(5px 5px 1px black);
 `
 const ResultStats = styled(Flex)`
   justify-content: center;
   background: rgba(200,200,200,0.5);
   font-size: 16px;
-  width: 140px;
+  width: 145px;
   padding: 5px;
   border-radius: 10%;
   flex-direction: column;
