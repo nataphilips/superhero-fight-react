@@ -157,7 +157,7 @@ class App extends Component {
               </Button>
               <Button small={true} onClick={() => this.reset()}>
                 <ButtonTxt className="btnText">RESET</ButtonTxt>
-                <ButtonTwo small={true} className="btnTwo">
+                <ButtonTwo noTransition={!this.state.displayResult} small={true} className="btnTwo">
                   <Hand>
                     <FontAwesomeIcon icon="times-circle" size="2x" />
                   </Hand>
@@ -332,7 +332,6 @@ const Button = styled(Flex)`
   height: 50px;
   overflow: hidden;
   text-align: center;
-  transition: .2s;
   font-size: 32px;
   cursor: pointer;
   align-items: center;
@@ -345,13 +344,13 @@ const Button = styled(Flex)`
     min-height: 40px;
     margin: 5px auto;
     filter: drop-shadow(2px 0px 5px white);
-    `}
+  `}
   &:hover {
     .btnTwo {
       left: -180px;
       ${props => props.small && `
-        left: -175px;
-        `}
+        left: -170px;
+      `}
     }
     .btnText {
       margin-left: 65px;
@@ -371,10 +370,12 @@ const ButtonTwo = styled(Flex)`
   left: -250px;
   transition: .3s;
   font-size: 60px;
+  ${props => props.noTransition &&`
+    transition: none;
+  `}
 `
 const ButtonTxt = styled(Flex)`
   color: white;
-  transition: .3s;
   padding-left: 90px;
 `
 const Hand = styled(Flex)`
