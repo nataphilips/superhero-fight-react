@@ -99,7 +99,7 @@ class App extends Component {
               <VSText>VS</VSText>
               <Button onClick={() => this.battle()}>
                 <ButtonTxt className="btnText">FIGHT!</ButtonTxt>
-                <ButtonTwo className="btnTwo">
+                <ButtonTwo noTransition={this.state.displayResult} className="btnTwo">
                   <Hand>
                     <FontAwesomeIcon icon="fist-raised" size="2x" spin />
                   </Hand>
