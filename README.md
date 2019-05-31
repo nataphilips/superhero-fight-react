@@ -21,5 +21,4 @@ Reset the fighting pair of characters by clicking on the portraits showing who i
 * Using fontawesome icons
 * Basic animation
 
-
-
+![SuperScreenshot](https://i.ibb.co/RDmMPFY/Superheroes.png)
