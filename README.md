@@ -19,6 +19,6 @@ Reset the fighting pair of characters by clicking on the portraits showing who i
 * Writing tests
 * Using Google fonts
 * Using fontawesome icons
-* Basic animation
+* Basic CSS animations
 
 ![SuperScreenshot](https://i.ibb.co/vVXsJQx/screencapture-localhost-3000-2019-05-31-17-43-45.png)
