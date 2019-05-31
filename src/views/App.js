@@ -94,6 +94,7 @@ class App extends Component {
       <AppBody>
         <BattleContainer>
           <Header>Epic Superhuman Battle</Header>
+
           <ChosenHero
             image={this.state.fightSlots[0] && this.state.fightSlots[0].picture}
             onClick={() => this.clearSlot(0)}>
@@ -101,6 +102,7 @@ class App extends Component {
               Pick a hero
             </PickText>
           </ChosenHero>
+
           <Battlefield>
           <ImageBattle />
             <VSBlock hidden={this.state.displayResult}>
@@ -134,18 +136,18 @@ class App extends Component {
                       </Num>
                   </ResultStat>
                   <ResultStat>
-                  Avg Dodging:
-                  <Num>
-                    {this.state.battleResult.p1Dodging}%
-                  </Num>
+                    Avg Dodging:
+                      <Num>
+                        {this.state.battleResult.p1Dodging}%
+                      </Num>
                   </ResultStat>
                 </ResultStats>
                 <ResultStats>
                   <ResultStat>
                     Avg Damage:
-                    <Num>
-                      {this.state.battleResult.p2AvgDamage}
-                    </Num>
+                      <Num>
+                        {this.state.battleResult.p2AvgDamage}
+                      </Num>
                   </ResultStat>
                   <ResultStat>
                     Avg Dodging:
@@ -181,9 +183,10 @@ class App extends Component {
                 Pick a hero
               </PickText>
           </ChosenHero>
-        </BattleContainer>
-        <HeroesContainer>
 
+        </BattleContainer>
+
+        <HeroesContainer>
           {this.characters.map(x => (
             <CardWrapper key={x.id}>
               <CharacterCard image={x.picture} onClick={() => this.choose(x)}>

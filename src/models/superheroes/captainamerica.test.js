@@ -8,7 +8,7 @@ describe('CaptainAmerica class', () => {
 
   it('should have correct stats', () => {
     const captainamerica = new CaptainAmerica()
-    expect(captainamerica.stats.combat).toBe(100)
-    expect(captainamerica.stats.power).toBe(60)
+    expect(captainamerica.stats.intelligence).toBe(85)
+    expect(captainamerica.stats.strength).toBe(60)
   });
 })

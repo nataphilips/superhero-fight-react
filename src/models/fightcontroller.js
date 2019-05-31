@@ -59,7 +59,7 @@ export default class FightController {
     this.debug && console.log(logName(defender) + ": " + logNumber(defender.stats.health))
   }
 
-  fight(c1, c2, debug = true) {
+  fight(c1, c2, debug = false) {
     this.debug = debug
     this.fightMoves = []
 

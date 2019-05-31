@@ -11,8 +11,4 @@ describe('Superhuman class', () => {
     expect(character.stats.health).toBe(100)
   });
 
-  it('should be able to name a superhuman', () => {
-    const mijao = new Superhuman('Mijao')
-    expect(mijao.name).toBe('Mijao')
-  });
 })

@@ -8,7 +8,7 @@ describe('LexLuthor class', () => {
 
   it('should have correct stats', () => {
     const lexluthor = new LexLuthor()
-    expect(lexluthor.stats.combat).toBe(50)
-    expect(lexluthor.stats.power).toBe(20)
+    expect(lexluthor.stats.intelligence).toBe(100)
+    expect(lexluthor.stats.speed).toBe(15)
   });
 })

@@ -8,7 +8,7 @@ describe('Magneto class', () => {
 
   it('should have correct stats', () => {
     const magneto = new Magneto()
-    expect(magneto.stats.combat).toBe(70)
-    expect(magneto.stats.power).toBe(85)
+    expect(magneto.stats.speed).toBe(60)
+    expect(magneto.stats.accuracy).toBe(10)
   });
 })

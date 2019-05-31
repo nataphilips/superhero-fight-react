@@ -8,7 +8,7 @@ describe('Hulk class', () => {
 
   it('should have correct stats', () => {
     const hulk = new Hulk()
-    expect(hulk.stats.combat).toBe(85)
-    expect(hulk.stats.power).toBe(100)
+    expect(hulk.stats.speed).toBe(65)
+    expect(hulk.stats.strength).toBe(100)
   });
 })

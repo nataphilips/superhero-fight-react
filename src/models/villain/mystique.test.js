@@ -8,7 +8,7 @@ describe('Mystique class', () => {
 
   it('should have correct stats', () => {
     const mystique = new Mystique()
-    expect(mystique.stats.combat).toBe(75)
-    expect(mystique.stats.power).toBe(65)
+    expect(mystique.stats.intelligence).toBe(90)
+    expect(mystique.stats.speed).toBe(25)
   });
 })

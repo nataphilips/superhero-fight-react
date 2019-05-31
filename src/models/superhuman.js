@@ -14,10 +14,6 @@ export default class Superhuman {
     };
   }
 
-  refresh() {
-    this.stats.health = 100
-  }
-
   attack() {
     return this.superPowers.reduce((total, x) => {
         return x.attack ? x.attack(total) : total

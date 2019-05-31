@@ -25,8 +25,6 @@ for(let i = 0; i < 100; i++) {
   fights.push(r)
 }
 
-// console.log(fights
-//   .reduce((r, x) => r.concat(x.moves),[]))
 const p1 = fights
   .reduce((r, x) => r.concat(x.moves),[])
   .filter(x => x.attacker === 'Joker')

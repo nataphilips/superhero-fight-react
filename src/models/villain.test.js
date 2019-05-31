@@ -12,17 +12,4 @@ describe('Villain class', () => {
     expect(villain.stats.health).toBe(100)
   });
 
-  it('should be able to name a villain', () => {
-    const venom = new Villain('Venom')
-    expect(venom.name).toBe('Venom')
-  });
-
-  it('should be able to attack a superhuman', () => {
-    const lexLuthor = new Villain('Lex Luthor')
-    const superman = new Superhero('Superman')
-
-    const fightResult = lexLuthor.attacks(superman)
-
-    expect(fightResult).toBe('Lex Luthor attacked Superman and his health is now 90')
-  });
 })
