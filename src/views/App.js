@@ -68,12 +68,14 @@ class App extends Component {
   }
 
   battle() {
-    const controller = new FightController()
-    this.setState({ displayResult: true })
-    const battleResult = controller.fight(this.state.fightSlots[0], this.state.fightSlots[1], false);
-    this.setState({ battleResult : battleResult});
-    this.resetHealth(this.state.fightSlots[0])
-    this.resetHealth(this.state.fightSlots[1])
+    if (this.state.fightSlots[0] && this.state.fightSlots[1]) {
+      const controller = new FightController()
+      this.setState({ displayResult: true })
+      const battleResult = controller.fight(this.state.fightSlots[0], this.state.fightSlots[1], false);
+      this.setState({ battleResult : battleResult});
+      this.resetHealth(this.state.fightSlots[0])
+      this.resetHealth(this.state.fightSlots[1])
+    }
   }
 
   resetHealth(char) {
