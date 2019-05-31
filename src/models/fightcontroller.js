@@ -104,11 +104,15 @@ export default class FightController {
         (player1Escaped) ? (c1.name) :
         'None',
       p1AvgDamage:
+        p1.find(x => x.damage) ?
         n(p1.map(x => x.damage)
-          .reduce((a, b) => a + b) / p1.length),
+          .reduce((a, b) => a + b) / p1.length) :
+        0,
       p2AvgDamage:
+        p2.find(x => x.damage) ?
         n(p2.map(x => x.damage)
-          .reduce((a, b) => a + b) / p2.length),
+          .reduce((a, b) => a + b) / p2.length) :
+        0,
       p1Dodging:
         n(p2.filter(x => x.dodged).length / p2.length * 100),
       p2Dodging:
