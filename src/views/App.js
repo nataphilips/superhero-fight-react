@@ -72,6 +72,12 @@ class App extends Component {
     this.setState({ displayResult: true })
     const battleResult = controller.fight(this.state.fightSlots[0], this.state.fightSlots[1], false);
     this.setState({ battleResult : battleResult});
+    this.resetHealth(this.state.fightSlots[0])
+    this.resetHealth(this.state.fightSlots[1])
+  }
+
+  resetHealth(char) {
+    char.stats.health = 100
   }
 
   reset() {
